@@ -1,5 +1,5 @@
 <#
-Developer: Srinath Prathi
+Developer: Mouni Prathi
 .Syntax
 Backup-MT_DDBoost_DB -servername hostname\instanename -database databasename
 .SYNOPSIS
