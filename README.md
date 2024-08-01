@@ -107,6 +107,7 @@
 *db1, db2 with replace and db3 with no recovery,*
 __use:__
 > `Restore-MT_SQLDB -restoreservername hostname\instancename -restoredatabase 'db1', 'db2' -Replace -recovery`
+
 > `Restore-MT_SQLDB -restoreservername hostname\instancename -restoredatabase 'db3' -Replace`
 
 # Working:
