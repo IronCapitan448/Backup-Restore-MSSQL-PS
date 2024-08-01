@@ -89,16 +89,16 @@
   > Restores all databases present in location $backupinfo.uncpath with same name.
  
   ### Example 6:
-  > `Restoring same database with one backup file to multiple servers`
+  > *Restoring same database with one backup file to multiple servers*
 
-  > `$backuplocation="\\hostname\E$\backup\disk1\MSSQL11.Instancename\Foldername\filename.bak"
+  > `$backuplocation="\\hostname\E$\backup\disk1\MSSQL11.Instancename\Foldername\filename.bak"`
 
-  > `$srvs= 'hostname1\instancename1','hostname2\instnacename2'
+  > `$srvs= 'hostname1\instancename1','hostname2\instnacename2'`
 
-  > `$srvs.GetEnumerator().foreach{Restore-MT_SQLDB -Restoreservername $_ -backuplocation $backuplocation -recovery}
+  > `$srvs.GetEnumerator().foreach{Restore-MT_SQLDB -Restoreservername $_ -backuplocation $backuplocation -recovery}`
 
   for with replace restore:
-  > `$srvs.GetEnumerator().foreach{Restore-MT_SQLDB -Restoreservername $_ -backuplocation $backuplocation -replace -recovery}
+  > `$srvs.GetEnumerator().foreach{Restore-MT_SQLDB -Restoreservername $_ -backuplocation $backuplocation -replace -recovery}`
 
 
 # Notes
