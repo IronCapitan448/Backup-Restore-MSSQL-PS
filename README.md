@@ -1,43 +1,38 @@
-Native Backup and Restore PowerShell Scripts
-Backup-MT_SQLDB
-Synopsis:
-Performs Native backup of specified database on specified server.
-Description:
-Upon passing backupservername and database name, Function will perform backup of that database on specified server. Single or multiple databases can be passed for backup. If no value is specified, then backup of all databases will be taken. Detailed Log file will be saved in location c:\temp\Backup-MT_SQLDB_*.
-Syntax:
-Backup-MT_SQLDB -backupserver hostname\instancename -backupdatabase 'dbname1','dbname2' -Type 'FULL' -backuplocation '\\hostname\E$\backup\disk1\foldername
-Parameters:
-Backupserver(Mandatory)
-hostname\instancename - source servername for backup.
-Backupdatabase 
-database name for backup on source server.
-Type 
-To specify type of backup. Type can be 'FULL', 'Log','Differential','Diff'
-Backuplocation
-Location for backup files(unc path only). If not specified default location will be used. If does not exits backup location will be created.
-Example 1:
-Backup-MT_SQLDB -backupserver hostname\instancename  -backupdatabase'db1','db2','db3'
-Performs backup of databases db1,db2 and db3 on backup server hostname\instance
-Example 2:
-Backup-MT_SQLDB -backupserver hostname\instancename -backupdatabase 'db1','db2','db3' -Type log
-Performs log backup of databases db1,db2 and db3
-Example 3:
-$backuplocation = "\\hostname\E$\backup\disk1\MSSQL11.Instancename\Foldername"
-$dbs= ('db1','db2','db3')
-Backup-MT_SQLDB -backupserver hostname\instancename -backupdatabase $dbs -Type Full -backuplocation $backuplocation
-Performs full backup of all databases in array $dbs to $backuplocation
-Example 4:
-$backuptable=@{}
-$backuptable.  ****TRY THIS******
-$srvs= 'hostname1\instancename1','hostname2\instnacename2'
-$srvs.GetEnumerator().foreach{Backup-MT_SQLDB -backupserver $_ }
-Backups all databases mentioned in array list $srvrs
-Example 5:
-$srvs= 'hostname1\instancename1','hostname2\instnacename2'
-$srvs.GetEnumerator().foreach{Backup-MT_SQLDB -backupserver $_ -backupdatabase 'sa'}
-Backups sa database on all servers in the array list $srvs
+# + Backup:
+# `Backup-MT_SQLDB`
+ 
+  __Synopsis__: Performs Native backup of specified database on specified server.
+ 
+  __Description__: Upon passing backupservername and database name, Function will perform backup of that database on specified server. Single or multiple databases can be passed for backup. If no value is specified, then backup of all databases will be taken. Detailed Log file will be saved in location c:\temp\Backup-MT_SQLDB_*.
 
-Restore-MT_SQLDB
+  __Syntax__: `Backup-MT_SQLDB -backupserver hostname\instancename -backupdatabase 'dbname1','dbname2' -Type 'FULL' -backuplocation '\\hostname\E$\backup\disk1\foldername`
+
+  __Parameters__: __Backupserver__*(Mandatory)*, __hostname\instancename__, __- source__ *servername for backup*, __Backupdatabase__ *database name for backup on source server.* __Type__ *To specify type of backup. Type can be '**FULL**', '**Log**','**Differential**','**Diff**'* , __Backuplocation__ *Location for backup files(unc path only). If not specified default location will be used. If does not exits backup location will be created.*
+
+## Example 1:
+> `Backup-MT_SQLDB -backupserver hostname\instancename  -backupdatabase'db1','db2','db3'`
+> Performs backup of databases db1,db2 and db3 on backup server hostname\instance
+## Example 2:
+> `Backup-MT_SQLDB -backupserver hostname\instancename -backupdatabase 'db1','db2','db3' -Type log`
+> Performs log backup of databases db1,db2 and db3
+## Example 3:
+> `$backuplocation = "\\hostname\E$\backup\disk1\MSSQL11.Instancename\Foldername"`
+> `$dbs= ('db1','db2','db3')`
+> `Backup-MT_SQLDB -backupserver hostname\instancename -backupdatabase $dbs -Type Full -backuplocation $backuplocation`
+> Performs full backup of all databases in array $dbs to $backuplocation
+## Example 4:
+>`$backuptable=@{}`
+>`$backuptable.  ****TRY THIS******`
+>`$srvs= 'hostname1\instancename1','hostname2\instnacename2'`
+>`$srvs.GetEnumerator().foreach{Backup-MT_SQLDB -backupserver $_ }`
+> Backups all databases mentioned in array list $srvrs`
+## Example 5:
+> `$srvs= 'hostname1\instancename1','hostname2\instnacename2'`
+> `$srvs.GetEnumerator().foreach{Backup-MT_SQLDB -backupserver $_ -backupdatabase 'sa'}`
+> Backups sa database on all servers in the array list $srvs
+----
+
+# + Restore-MT_SQLDB
 Synopsis:
 Performs restore of database on specified server when correct backup files or location is provided
 Description:
