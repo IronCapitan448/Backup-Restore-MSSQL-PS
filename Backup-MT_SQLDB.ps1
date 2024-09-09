@@ -1,6 +1,6 @@
 <#
 .Developer
-Srinath Prathi
+Mouni Prathi
 .SYNOPSIS
 Performs Native backup of specified database on specified server.
 .DESCRIPTION
